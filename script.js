@@ -54,6 +54,7 @@ ivaTotalM = ivaTotal.toFixed(2)
 alert(`El iva del producto ingresado es ${ivaTotalM}`)
 console.log(`El iva del producto ingresado es ${ivaTotalM}`);
 
+
 //! Calcular el precio sugerido de venta
 
 function calcularPrecioVentaConIva(precioVentaSinIva, ivaTotal){
