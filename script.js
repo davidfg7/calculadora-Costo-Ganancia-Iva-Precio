@@ -51,8 +51,8 @@ var ivaTotal = calcularIva(precioVentaSinIva, tasaIva)
 
 ivaTotalM = ivaTotal.toFixed(2)
 
-alert(`El iva del producto ingresado es ${ivaTotalM}`)
-console.log(`El iva del producto ingresado es ${ivaTotalM}`);
+alert(`El importe correspondiente a iva es = ${ivaTotalM}`)
+console.log(`El importe correspondiente a iva es = ${ivaTotalM}`);
 
 
 //! Calcular el precio sugerido de venta
@@ -65,5 +65,5 @@ var precioVentaConIva = calcularPrecioVentaConIva(precioVentaSinIva, ivaTotal);
 
 precioVentaConIvaM = precioVentaConIva.toFixed(2)
 
-alert(`El precio sugerido de venta al público es ${precioVentaConIvaM}`)
-console.log(`El precio sugerido de venta al público es ${precioVentaConIvaM}`);
+alert(`El precio de venta total al público es = ${precioVentaConIvaM}`)
+console.log(`El precio de venta total al público es = ${precioVentaConIvaM}`);
