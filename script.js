@@ -1,58 +1,68 @@
-//! Solicitar al usuario que ingrese el precio de costo del producto al que se le va a calcular el iva
+//! Solicitar al usuario que ingrese el costo del producto al que se le va a calcular el iva
 
 while(true){
-    var precioCosto = parseFloat(prompt("Ingrese el precio de costo del producto"))
+    var costo = parseFloat(prompt("Ingrese el costo del producto a vender"))
 
-    if(precioCosto != isNaN && precioCosto != null && precioCosto != ""){
-        alert("es número")
+    if(costo != isNaN && costo != null && costo != ""){
         break;
-    } else{
-        alert("no es número")
+    } else {
+        alert("no es número, por favor ingrese un número")
         continue;
     }
 }
 
-precioCostoM = precioCosto.toFixed(2)
-alert(`El precio de costo del producto a calcular es ${precioCostoM}`)
-console.log(`El precio de costo del producto a calcular es ${precioCostoM}`);
+costoM = costo.toFixed(2)
+alert(`El costo del producto es ${costoM}`)
+console.log(`El costo del producto es ${costoM}`);
 
-//! Sumar el iva al producto
+//! Calcular el porcentaje de ganancia deseado
 
-let porcentajeIva = 0.21
+while(true){
+    var porcentajeGanancia = parseFloat(prompt("Ingrese el porcentaje de ganancia por venta deseado"))
 
-function calcularIva(precioCosto, porcentajeIva) {
-    return precioCosto * porcentajeIva
+    if(porcentajeGanancia != isNaN && porcentajeGanancia != null && porcentajeGanancia != ""){
+        break;
+    } else{
+        alert("Por favor ingrese un número")
+        continue;
+    }
 }
 
-let iva = calcularIva(precioCosto, porcentajeIva)
+var porcentajeGananciaM = (porcentajeGanancia / 100);
 
-ivaM = iva.toFixed(2)
-
-alert(`El iva del producto ingresado es ${ivaM}`)
-console.log(`El iva del producto ingresado es ${ivaM}`);
-
-//! Sumarle el iva al precio del producto con iva
-
-function sumarIva(precioCosto){
-    return (precioCosto + (precioCosto * porcentajeIva))
+function calcularGanancia(costo){
+    return (costo + (costo * porcentajeGananciaM))
 }
 
-let precioConIva = sumarIva(precioCosto)
-let precioConIvaM = precioConIva.toFixed(2)
+var precioVentaSinIva = calcularGanancia(costo)
+var precioVentaSinIvaM = precioVentaSinIva.toFixed(2)
 
-alert(`El precio del producto con IVA es = ${precioConIvaM}`)
-console.log(`El precio del producto con IVA es = ${precioConIvaM}`);
+alert(`El precio de venta sin IVA es = ${precioVentaSinIvaM}`);
+console.log(`El precio de venta sin IVA es = ${precioVentaSinIvaM}`);
+
+//! Calcular el iva 
+
+function calcularIva(precioVentaSinIva, tasaIva){
+    return (precioVentaSinIva * tasaIva)
+}
+
+const tasaIva = 0.21
+var ivaTotal = calcularIva(precioVentaSinIva, tasaIva)
+
+ivaTotalM = ivaTotal.toFixed(2)
+
+alert(`El iva del producto ingresado es ${ivaTotalM}`)
+console.log(`El iva del producto ingresado es ${ivaTotalM}`);
 
 //! Calcular el precio sugerido de venta
 
-let porcentajeGanancia = 0.25
-
-function sumarGanancia(precioConIva){
-    return (precioConIva + (precioConIva * porcentajeGanancia))
+function calcularPrecioVentaConIva(precioVentaSinIva, ivaTotal){
+    return (precioVentaSinIva + ivaTotal)
 }
 
-let precioVenta = sumarGanancia(precioConIva)
-let precioVentaM = precioVenta.toFixed(2)
+var precioVentaConIva = calcularPrecioVentaConIva(precioVentaSinIva, ivaTotal);
 
-alert(`El precio sugerido de venta es = ${precioVentaM}`)
-console.log(`El precio sugerido de venta es = ${precioVentaM}`);
+precioVentaConIvaM = precioVentaConIva.toFixed(2)
+
+alert(`El precio sugerido de venta al público es ${precioVentaConIvaM}`)
+console.log(`El precio sugerido de venta al público es ${precioVentaConIvaM}`);
